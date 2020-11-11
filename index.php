@@ -16,7 +16,7 @@
 
     <div>
         <label for="equipes">Escolha um time</label>
-        <select name="equipes" id="equipes" >
+        <select name="equipes" id="equipes" onchange="getValor(this.id);">
             <?php
                 $query = "SELECT * FROM Equipes;";
                 $resultado = mysqli_query($link, $query);
@@ -65,7 +65,7 @@
         }
 
         function getValor(argument) {
-            alert(argument);
+            //alert(argument);
             if (argument == 'equipes') {
                 var equipe = document.getElementById(argument).value;
 
@@ -82,11 +82,10 @@
                     //console.log(retorno.length);
                     for(var i = 0; i < retorno.length; i++){
                         var option = document.createElement("option");
-                        option.text = retorno[i].MATERIAL+" - "+retorno[i].DESCRICAO;
-                        option.value = retorno[i].MATERIAL;
+                        option.text = retorno[i].nome;
+                        option.value = retorno[i].nome;
                         select.appendChild(option);
-                        //console.log(retorno[i].MATERIAL);
-                        //console.log(retorno[i].MATERIAL+" - "+retorno[i].DESCRICAO);
+                        //console.log(retorno[i].nome);
                     }
                 }
                 xmlhttp.open("GET","scripts/processa_valor_equipe.php?Equipe="+equipe,true);

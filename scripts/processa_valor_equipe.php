@@ -11,20 +11,20 @@
 	}
 	require '../conexao.php';
 
-	$Area = (String)$_GET['Area'];
+	$Equipe = (String)$_GET['Equipe'];
 
 
-	$query = "	SELECT 	
-                    distinct SUC_PAR_MATERIAL.MATERIAL, 
-                    SUC_PAR_MATERIAL.DESCRICAO, 
-                    SUC_Associacao.Sucata, 
-                    SUC_Associacao.Area 
-                FROM 
-                    SUC_PAR_MATERIAL, 
-                    SUC_Associacao 
+	$query = "	SELECT
+					distinct
+					associacoes.equipe,
+                    associacoes.posicao,
+					posicoes.nome
+                FROM
+					associacoes,
+					posicoes
                 WHERE 
-                    SUC_PAR_MATERIAL.MATERIAL LIKE SUC_Associacao.Sucata AND 
-                    SUC_Associacao.Area LIKE '$Area';";
+					associacoes.posicao LIKE posicoes.nome AND 
+                    associacoes.equipe LIKE '$Equipe';";
 
 	$resultado = mysqli_query($link, $query);
 	$saida = array();

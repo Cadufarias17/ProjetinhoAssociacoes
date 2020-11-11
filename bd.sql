@@ -34,10 +34,10 @@ VALUES
 INSERT INTO Posicoes
     (nome)
 VALUES
-    ('goleiro'),
-    ('zagueiro'),
-    ('meia'),
-    ('atacante');
+    ('Goleiro'),
+    ('Zagueiro'),
+    ('Meia'),
+    ('Atacante');
 
 INSERT INTO Jogadores
     (nome)
@@ -50,3 +50,24 @@ VALUES
     ('Luan'),
     ('Gabigol'),
     ('Pedro');
+
+CREATE TABLE Associacoes (
+    id INT NOT NULL AUTO_INCREMENT,
+    equipe VARCHAR(50) NOT NULL,
+    posicao VARCHAR(50) NOT NULL,
+    jogador VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (id)
+);
+
+INSERT INTO Associacoes
+    (equipe, posicao, jogador)
+VALUES
+    ('Gremio', 'Goleiro', 'Vanderlei'),
+    ('Gremio', 'Goleiro', 'PV'),
+    ('Inter', 'Zagueiro', 'Cuesta'),
+    ('Inter', 'Zagueiro', 'Moledo'),
+    ('Corinthians', 'Meia', 'Ramiro'),
+    ('Corinthians', 'Meia', 'Luan'),
+    ('Flamengo', 'Atacante', 'Gabigol'),
+    ('Flamengo', 'Atacante', 'Pedro');
